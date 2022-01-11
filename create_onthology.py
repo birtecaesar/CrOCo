@@ -1,5 +1,5 @@
 import pandas as pd
-from owlready2 import ObjectProperty, Thing, get_ontology
+from owlready2 import ObjectProperty, Thing, get_ontology, AllDisjoint
 
 MAX_LOOP_COUNT = 100
 
@@ -61,7 +61,8 @@ def create_classes_and_subclasses(df):
 
 
 def create_relationships_between_classes(df, class_dict):
-    object_property = df.dropna(subset=["RelationshipType"])
+    fm_property = df.loc[((df["RelationshipType"] != 'OR') & (df["RelationshipType"] != 'AND') & (df["RelationshipType"] != 'Requires') & (df["RelationshipType"] != 'Excludes')),:]
+    object_property = fm_property.dropna(subset=["RelationshipType"])
     property_dict = {}
     for _, row in object_property.iterrows():
         relationship_type = row["RelationshipType"]
@@ -83,6 +84,21 @@ def add_comments_to_classes(df, class_dict):
         class_dict[relevant_class].comment.append(comment)
 
 
+def add_same_as_class_restriction(df, class_dict):
+    same_as = df.dropna(subset=["SameAs"])
+    for _, row in same_as.iterrows():
+        same = row["SameAs"]
+        relevant_class = row["ContextInformation"]
+        class_dict[relevant_class].equivalent_to.append(class_dict[same])
+
+
+def add_disjoint_with_class_restriction(df, class_dict):
+    disjoint_with = df.dropna(subset=["DisjointWith"])
+    for _, row in disjoint_with.iterrows():
+        disjoint = row["DisjointWith"]
+        relevant_class = row["ContextInformation"]
+        AllDisjoint([class_dict[relevant_class], class_dict[disjoint]])
+
 def main():
     df = pd.read_excel(
         "C://Users/Caesar/Documents/Spaces/BackUp/Dissertation/KontextModellierung/OntoCreationTest.xlsx",
@@ -100,6 +116,12 @@ def main():
 
         # add comments from excel sheet 'Descriptions' to classes
         add_comments_to_classes(df, class_dict)
+
+        # add same as relation to classes
+        add_same_as_class_restriction(df, class_dict)
+
+        # add disjoint with relation to classes
+        add_disjoint_with_class_restriction(df, class_dict)
 
         # save onthology to .owl file
         con_onto.save(file="Normnummer.owl", format="rdfxml")
