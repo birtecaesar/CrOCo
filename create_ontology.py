@@ -1,5 +1,17 @@
 import pandas as pd
-from owlready2 import ObjectProperty, Thing, get_ontology, AllDisjoint
+from owlready2 import (
+    ObjectProperty,
+    Thing,
+    get_ontology,
+    AllDisjoint,
+    FunctionalProperty,
+    InverseFunctionalProperty,
+    TransitiveProperty,
+    SymmetricProperty,
+    AsymmetricProperty,
+    ReflexiveProperty,
+    IrreflexiveProperty,
+)
 
 MAX_LOOP_COUNT = 100
 
@@ -60,20 +72,60 @@ def create_classes_and_subclasses(df):
     return class_dict
 
 
-def create_relationships_between_classes(df, class_dict):
-    fm_property = df.loc[((df["RelationshipType"] != 'OR') & (df["RelationshipType"] != 'AND') & (df["RelationshipType"] != 'Requires') & (df["RelationshipType"] != 'Excludes')),:]
+def create_relationships_between_classes(df, class_dict, dr):
+
+    # mapping of parent class and column name
+    name2class = {
+        "Functional": FunctionalProperty,
+        "InverseFunctional": InverseFunctionalProperty,
+        "Transitive": TransitiveProperty,
+        "Symmetric": SymmetricProperty,
+        "Asymmetric": AsymmetricProperty,
+        "Reflexive": ReflexiveProperty,
+        "Irreflexive": IrreflexiveProperty,
+    }
+
+    fm_property = df.loc[
+        (
+            (df["RelationshipType"] != "OR")
+            & (df["RelationshipType"] != "AND")
+            & (df["RelationshipType"] != "Requires")
+            & (df["RelationshipType"] != "Excludes")
+        ),
+        :,
+    ]
     object_property = fm_property.dropna(subset=["RelationshipType"])
+
+    # fill property classes with relationships
     property_dict = {}
-    for _, row in object_property.iterrows():
-        relationship_type = row["RelationshipType"]
-        domain_name = row["ContextInformation"]
-        range_name = row["RelatedContextInformation"]
-        property_dict[relationship_type] = create_subclass(
-            parent_class=ObjectProperty,
-            name=relationship_type,
-        )
-        property_dict[relationship_type].domain.append(class_dict[domain_name])
-        property_dict[relationship_type].range.append(class_dict[range_name])
+    for name, values in dr.set_index("RelationshipType").iteritems():
+        property_specs = values.dropna()
+        if property_specs.empty:
+            print(f"Ignore {name} because no entry was found.")
+            continue
+        for property_spec in property_specs.index:
+            # get dataframe index of object property specification
+            idx_element = next(
+                iter(
+                    object_property.index[
+                        object_property["RelationshipType"] == property_spec
+                    ]
+                )
+            )
+            # retrieve object property domain and range
+            relationship_type = df.loc[idx_element, "RelationshipType"]
+            domain_name = df.loc[idx_element, "ContextInformation"]
+            range_name = df.loc[idx_element, "RelatedContextInformation"]
+            if name not in name2class:
+                print(f"Could not find {name}.")
+                continue
+            # fill property dict and add object property domain and range to class
+            property_dict[relationship_type] = create_subclass(
+                parent_class=name2class[name],
+                name=relationship_type,
+            )
+            property_dict[relationship_type].domain.append(class_dict[domain_name])
+            property_dict[relationship_type].range.append(class_dict[range_name])
 
 
 def add_comments_to_classes(df, class_dict):
@@ -99,20 +151,30 @@ def add_disjoint_with_class_restriction(df, class_dict):
         relevant_class = row["ContextInformation"]
         AllDisjoint([class_dict[relevant_class], class_dict[disjoint]])
 
+
 def main():
-    df = pd.read_excel(
-        "C://Users/Caesar/Documents/Spaces/BackUp/Dissertation/KontextModellierung/OntoCreationTest.xlsx",
-        sheet_name=1,
+    df = pd.read_csv(
+        "C://Users/Caesar/Documents/Spaces/BackUp/Dissertation/KontextModellierung/OntoCreationTest_Page_Ontology_FM.csv",
+        header=0,
+        sep=";",
+        encoding="latin1",
     )
 
-    con_onto = get_ontology("https://context_ontology/Normnummer.owl")
+    dr = pd.read_csv(
+        "C://Users/Caesar/Documents/Spaces/BackUp/Dissertation/KontextModellierung/OntoCreationTest_Page_RelTyp.csv",
+        header=0,
+        sep=";",
+        encoding="latin1",
+    )
+
+    con_onto = get_ontology("https://context_ontology/ContextModel.owl")
 
     with con_onto:
         # create classes according to excel sheet
         class_dict = create_classes_and_subclasses(df)
 
         # create property classes that define the relationship between classes
-        create_relationships_between_classes(df, class_dict)
+        create_relationships_between_classes(df, class_dict, dr)
 
         # add comments from excel sheet 'Descriptions' to classes
         add_comments_to_classes(df, class_dict)
@@ -123,8 +185,8 @@ def main():
         # add disjoint with relation to classes
         add_disjoint_with_class_restriction(df, class_dict)
 
-        # save onthology to .owl file
-        con_onto.save(file="Normnummer.owl", format="rdfxml")
+        # save ontology to .owl file
+        con_onto.save(file="ContextModel.owl", format="rdfxml")
 
 
 if __name__ == "__main__":
