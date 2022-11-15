@@ -1,0 +1,7 @@
+Relationship;Functional;InverseFunctional;Transitive;Symmetric;Asymmetric;Reflexive;Irreflexive;Inverse
+consitsOfYear;X;;;;;;;
+consitsOfMonth;X;;;;;;;
+consitsOfDay;X;;;;;;;
+consitsOfHour;;;;;X;;;
+consitsOfMinute;;;;;X;;;
+consitsOfSecond;;;;;X;;;

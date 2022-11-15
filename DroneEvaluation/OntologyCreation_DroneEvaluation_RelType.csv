@@ -1,0 +1,5 @@
+﻿a;Relationship;Functional;InverseFunctional;Transitive;Symmetric;Asymmetric;Reflexive;Irreflexive;Inverse
+;influencedByRain;;;;;X;;;
+;influencedBySnow;;;;;X;;;
+;hasSourceGeolocation;;;;;X;;;
+;hasTargetGeolocation;;;;;X;;;

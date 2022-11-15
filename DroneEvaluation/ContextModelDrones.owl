@@ -1,0 +1,317 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="https://context_ontology/ContextModel.owl#"
+     xml:base="https://context_ontology/ContextModel.owl"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="https://context_ontology/ContextModel.owl">
+        <owl:imports rdf:resource="http://www.hsu-ifa.de/ontologies/VDI5100"/>
+        <owl:imports rdf:resource="http://www.hsu-ifa.de/ontologies/ISA-TR88/1.2.0"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- https://context_ontology/ContextModel.owl#hasSourceGeolocation -->
+
+    <owl:ObjectProperty rdf:about="https://context_ontology/ContextModel.owl#hasSourceGeolocation">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdfs:domain rdf:resource="https://context_ontology/ContextModel.owl#Source"/>
+        <rdfs:range rdf:resource="https://context_ontology/ContextModel.owl#Geolocation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://context_ontology/ContextModel.owl#hasTargetGeolocation -->
+
+    <owl:ObjectProperty rdf:about="https://context_ontology/ContextModel.owl#hasTargetGeolocation">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdfs:domain rdf:resource="https://context_ontology/ContextModel.owl#Target"/>
+        <rdfs:range rdf:resource="https://context_ontology/ContextModel.owl#Geolocation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://context_ontology/ContextModel.owl#influencedByRain -->
+
+    <owl:ObjectProperty rdf:about="https://context_ontology/ContextModel.owl#influencedByRain">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdfs:domain rdf:resource="https://context_ontology/ContextModel.owl#RainFall"/>
+        <rdfs:range rdf:resource="https://context_ontology/ContextModel.owl#VisualRange"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://context_ontology/ContextModel.owl#influencedBySnow -->
+
+    <owl:ObjectProperty rdf:about="https://context_ontology/ContextModel.owl#influencedBySnow">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdfs:domain rdf:resource="https://context_ontology/ContextModel.owl#SnowFall"/>
+        <rdfs:range rdf:resource="https://context_ontology/ContextModel.owl#VisualRange"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- https://context_ontology/ContextModel.owl#hasObjectDimension -->
+
+    <owl:DatatypeProperty rdf:about="https://context_ontology/ContextModel.owl#hasObjectDimension">
+        <rdfs:domain rdf:resource="https://context_ontology/ContextModel.owl#Small-Load-Carrier"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://context_ontology/ContextModel.owl#hasObjectWeight -->
+
+    <owl:DatatypeProperty rdf:about="https://context_ontology/ContextModel.owl#hasObjectWeight">
+        <rdfs:domain rdf:resource="http://www.hsu-ifa.de/ontologies/VDI5100#TransportUnit"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- https://context_ontology/ContextModel.owl#EnvironmentTemperature -->
+
+    <owl:Class rdf:about="https://context_ontology/ContextModel.owl#EnvironmentTemperature">
+        <rdfs:subClassOf rdf:resource="https://context_ontology/ContextModel.owl#MeteorologicalInformation"/>
+    </owl:Class>
+    
+
+
+    <!-- https://context_ontology/ContextModel.owl#Geolocation -->
+
+    <owl:Class rdf:about="https://context_ontology/ContextModel.owl#Geolocation">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- https://context_ontology/ContextModel.owl#HorizontalWindDirection -->
+
+    <owl:Class rdf:about="https://context_ontology/ContextModel.owl#HorizontalWindDirection">
+        <rdfs:subClassOf rdf:resource="https://context_ontology/ContextModel.owl#MeteorologicalInformation"/>
+    </owl:Class>
+    
+
+
+    <!-- https://context_ontology/ContextModel.owl#HorizontalWindSpeed -->
+
+    <owl:Class rdf:about="https://context_ontology/ContextModel.owl#HorizontalWindSpeed">
+        <rdfs:subClassOf rdf:resource="https://context_ontology/ContextModel.owl#MeteorologicalInformation"/>
+    </owl:Class>
+    
+
+
+    <!-- https://context_ontology/ContextModel.owl#MeteorologicalInformation -->
+
+    <owl:Class rdf:about="https://context_ontology/ContextModel.owl#MeteorologicalInformation">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- https://context_ontology/ContextModel.owl#MeteorologicalOpticalRange -->
+
+    <owl:Class rdf:about="https://context_ontology/ContextModel.owl#MeteorologicalOpticalRange">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <owl:disjointWith rdf:resource="https://context_ontology/ContextModel.owl#VisualRange"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WeglÃ¤nge in der AtmosphÃ¤re, die erforderlich ist, um den Lichtstrom in einem kollimierten StrahlenbÃ¼ndel einer GlÃ¼hlampe bei einer Farbtemperatur von 2 700 K auf einen Wert von 5 % des Ausgangswertes zu verringern</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- https://context_ontology/ContextModel.owl#R-KLT_3215 -->
+
+    <owl:Class rdf:about="https://context_ontology/ContextModel.owl#R-KLT_3215">
+        <rdfs:subClassOf rdf:resource="https://context_ontology/ContextModel.owl#Small-Load-Carrier"/>
+    </owl:Class>
+    
+
+
+    <!-- https://context_ontology/ContextModel.owl#R-KLT_4315 -->
+
+    <owl:Class rdf:about="https://context_ontology/ContextModel.owl#R-KLT_4315">
+        <rdfs:subClassOf rdf:resource="https://context_ontology/ContextModel.owl#Small-Load-Carrier"/>
+    </owl:Class>
+    
+
+
+    <!-- https://context_ontology/ContextModel.owl#R-KLT_4329 -->
+
+    <owl:Class rdf:about="https://context_ontology/ContextModel.owl#R-KLT_4329">
+        <rdfs:subClassOf rdf:resource="https://context_ontology/ContextModel.owl#Small-Load-Carrier"/>
+    </owl:Class>
+    
+
+
+    <!-- https://context_ontology/ContextModel.owl#R-KLT_6415 -->
+
+    <owl:Class rdf:about="https://context_ontology/ContextModel.owl#R-KLT_6415">
+        <rdfs:subClassOf rdf:resource="https://context_ontology/ContextModel.owl#Small-Load-Carrier"/>
+    </owl:Class>
+    
+
+
+    <!-- https://context_ontology/ContextModel.owl#R-KLT_6429 -->
+
+    <owl:Class rdf:about="https://context_ontology/ContextModel.owl#R-KLT_6429">
+        <rdfs:subClassOf rdf:resource="https://context_ontology/ContextModel.owl#Small-Load-Carrier"/>
+    </owl:Class>
+    
+
+
+    <!-- https://context_ontology/ContextModel.owl#RainFall -->
+
+    <owl:Class rdf:about="https://context_ontology/ContextModel.owl#RainFall">
+        <rdfs:subClassOf rdf:resource="https://context_ontology/ContextModel.owl#MeteorologicalInformation"/>
+    </owl:Class>
+    
+
+
+    <!-- https://context_ontology/ContextModel.owl#RunwayVisualRange -->
+
+    <owl:Class rdf:about="https://context_ontology/ContextModel.owl#RunwayVisualRange">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Entfernung, Ã¼ber die der Pilot eines Luftfahrzeuges auf der Landebahnmittellinie die Markierungen auf der OberflÃ¤che der Landebahn oder die Feuer sehen kann, die die Landebahn begrenzen oder ihre Mittellinie kennzeichnen</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- https://context_ontology/ContextModel.owl#SlantOpticalRange -->
+
+    <owl:Class rdf:about="https://context_ontology/ContextModel.owl#SlantOpticalRange">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <owl:disjointWith rdf:resource="https://context_ontology/ContextModel.owl#SlantVisualRange"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">horizontale Projektion der maximalen Entfernung, Ã¼ber die ein schwarzes Ziel in einer Ebene durch einen Beobachter erkennbar ist, der sich in einer HÃ¶he h Ã¼ber der Ebene befindet, wobei der Kontrast 5 % betrÃ¤gt</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- https://context_ontology/ContextModel.owl#SlantVisualRange -->
+
+    <owl:Class rdf:about="https://context_ontology/ContextModel.owl#SlantVisualRange">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sichtweite fÃ¼r ein festgelegtes Objekt oder Licht entlang einer Sichtlinie, die signifikant von der Horizontalen abweicht; beispielsweise die Sichtweite auf Objekte oder Lichter am Boden, gesehen von einem im Anflug befindlichen Luftfahrzeug</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- https://context_ontology/ContextModel.owl#Small-Load-Carrier -->
+
+    <owl:Class rdf:about="https://context_ontology/ContextModel.owl#Small-Load-Carrier">
+        <rdfs:subClassOf rdf:resource="http://www.hsu-ifa.de/ontologies/VDI5100#TransportUnit"/>
+    </owl:Class>
+    
+
+
+    <!-- https://context_ontology/ContextModel.owl#SnowFall -->
+
+    <owl:Class rdf:about="https://context_ontology/ContextModel.owl#SnowFall">
+        <rdfs:subClassOf rdf:resource="https://context_ontology/ContextModel.owl#MeteorologicalInformation"/>
+    </owl:Class>
+    
+
+
+    <!-- https://context_ontology/ContextModel.owl#Source -->
+
+    <owl:Class rdf:about="https://context_ontology/ContextModel.owl#Source">
+        <rdfs:subClassOf rdf:resource="http://www.hsu-ifa.de/ontologies/VDI5100#TransportOrder"/>
+    </owl:Class>
+    
+
+
+    <!-- https://context_ontology/ContextModel.owl#Target -->
+
+    <owl:Class rdf:about="https://context_ontology/ContextModel.owl#Target">
+        <rdfs:subClassOf rdf:resource="http://www.hsu-ifa.de/ontologies/VDI5100#TransportOrder"/>
+    </owl:Class>
+    
+
+
+    <!-- https://context_ontology/ContextModel.owl#VerticalOpticalRange -->
+
+    <owl:Class rdf:about="https://context_ontology/ContextModel.owl#VerticalOpticalRange">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">meteorologische Sichtweite in vertikaler Richtung</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- https://context_ontology/ContextModel.owl#VerticalWindDirection -->
+
+    <owl:Class rdf:about="https://context_ontology/ContextModel.owl#VerticalWindDirection">
+        <rdfs:subClassOf rdf:resource="https://context_ontology/ContextModel.owl#MeteorologicalInformation"/>
+    </owl:Class>
+    
+
+
+    <!-- https://context_ontology/ContextModel.owl#VerticalWindSpeed -->
+
+    <owl:Class rdf:about="https://context_ontology/ContextModel.owl#VerticalWindSpeed">
+        <rdfs:subClassOf rdf:resource="https://context_ontology/ContextModel.owl#MeteorologicalInformation"/>
+    </owl:Class>
+    
+
+
+    <!-- https://context_ontology/ContextModel.owl#Vision -->
+
+    <owl:Class rdf:about="https://context_ontology/ContextModel.owl#Vision">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <owl:disjointWith rdf:resource="https://context_ontology/ContextModel.owl#VisualRange"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">grÃ¶Ãte Entfernung, aus der ein (auf dem Boden befindliches) schwarzes Objekt geeigneter GrÃ¶Ãe sichtbar und erkennbar ist, wenn es bei Tageslicht gegen den Horizonthimmel betrachtet wird, oder das bei Nacht sichtbar und erkennbar ist, wenn das Umgebungslicht auf das Niveau des normalen Tageslichts angehoben wurde</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- https://context_ontology/ContextModel.owl#VisualRange -->
+
+    <owl:Class rdf:about="https://context_ontology/ContextModel.owl#VisualRange">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">grÃ¶Ãte Entfernung, aus der ein gegebenes Objekt unter beliebigen Bedingungen erkennbar ist, wobei lediglich die atmosphÃ¤rische TransmissivitÃ¤t und der Schwellenkontrast als begrenzende Faktoren wirken</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- https://context_ontology/ContextModel.owl#WindGustSpeed -->
+
+    <owl:Class rdf:about="https://context_ontology/ContextModel.owl#WindGustSpeed">
+        <rdfs:subClassOf rdf:resource="https://context_ontology/ContextModel.owl#MeteorologicalInformation"/>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+

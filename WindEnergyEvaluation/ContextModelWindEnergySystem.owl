@@ -1,0 +1,212 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xml:base="https://context_ontology/ContextModel.owl"
+         xmlns="https://context_ontology/ContextModel.owl#">
+
+<owl:Ontology rdf:about="https://context_ontology/ContextModel.owl"/>
+
+<owl:Class rdf:about="#MeteorologicalInformation">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Date">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Year">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Month">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Day">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Time">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Hour">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Minute">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Second">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#InertiaResponse">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#WindPowerPlantMeteorologicalInformation">
+  <rdfs:subClassOf rdf:resource="#MeteorologicalInformation"/>
+</owl:Class>
+
+<owl:Class rdf:about="#AirDensity">
+  <rdfs:subClassOf rdf:resource="#WindPowerPlantMeteorologicalInformation"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Altitude">
+  <rdfs:subClassOf rdf:resource="#WindPowerPlantMeteorologicalInformation"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Ice">
+  <rdfs:subClassOf rdf:resource="#WindPowerPlantMeteorologicalInformation"/>
+</owl:Class>
+
+<owl:Class rdf:about="#WaterTemperature">
+  <rdfs:subClassOf rdf:resource="#WindPowerPlantMeteorologicalInformation"/>
+</owl:Class>
+
+<owl:Class rdf:about="#EnvironmentTemperature">
+  <rdfs:subClassOf rdf:resource="#MeteorologicalInformation"/>
+</owl:Class>
+
+<owl:Class rdf:about="#WetBulbTemperature">
+  <rdfs:subClassOf rdf:resource="#MeteorologicalInformation"/>
+</owl:Class>
+
+<owl:Class rdf:about="#CloudCover">
+  <rdfs:subClassOf rdf:resource="#MeteorologicalInformation"/>
+</owl:Class>
+
+<owl:Class rdf:about="#EnvironmentHumidity">
+  <rdfs:subClassOf rdf:resource="#MeteorologicalInformation"/>
+</owl:Class>
+
+<owl:Class rdf:about="#DewPoint">
+  <rdfs:subClassOf rdf:resource="#MeteorologicalInformation"/>
+</owl:Class>
+
+<owl:Class rdf:about="#DirectInsolation">
+  <rdfs:subClassOf rdf:resource="#MeteorologicalInformation"/>
+</owl:Class>
+
+<owl:Class rdf:about="#DiffuseInsolation">
+  <rdfs:subClassOf rdf:resource="#MeteorologicalInformation"/>
+</owl:Class>
+
+<owl:Class rdf:about="#DelayDuration">
+  <rdfs:subClassOf rdf:resource="#MeteorologicalInformation"/>
+</owl:Class>
+
+<owl:Class rdf:about="#HorizontalInsolation">
+  <rdfs:subClassOf rdf:resource="#MeteorologicalInformation"/>
+</owl:Class>
+
+<owl:Class rdf:about="#EnvironmentPressure">
+  <rdfs:subClassOf rdf:resource="#MeteorologicalInformation"/>
+</owl:Class>
+
+<owl:Class rdf:about="#RainFall">
+  <rdfs:subClassOf rdf:resource="#MeteorologicalInformation"/>
+</owl:Class>
+
+<owl:Class rdf:about="#SnowDensity">
+  <rdfs:subClassOf rdf:resource="#MeteorologicalInformation"/>
+</owl:Class>
+
+<owl:Class rdf:about="#SnowTemperature">
+  <rdfs:subClassOf rdf:resource="#MeteorologicalInformation"/>
+</owl:Class>
+
+<owl:Class rdf:about="#SnowCover">
+  <rdfs:subClassOf rdf:resource="#MeteorologicalInformation"/>
+</owl:Class>
+
+<owl:Class rdf:about="#SnowFall">
+  <rdfs:subClassOf rdf:resource="#MeteorologicalInformation"/>
+</owl:Class>
+
+<owl:Class rdf:about="#SnowEqualization">
+  <rdfs:subClassOf rdf:resource="#MeteorologicalInformation"/>
+</owl:Class>
+
+<owl:Class rdf:about="#HorizontalWindSpeed">
+  <rdfs:subClassOf rdf:resource="#MeteorologicalInformation"/>
+</owl:Class>
+
+<owl:Class rdf:about="#VerticalWindSpeed">
+  <rdfs:subClassOf rdf:resource="#MeteorologicalInformation"/>
+</owl:Class>
+
+<owl:Class rdf:about="#HorizontalWindDirection">
+  <rdfs:subClassOf rdf:resource="#MeteorologicalInformation"/>
+</owl:Class>
+
+<owl:Class rdf:about="#VerticalWindDirection">
+  <rdfs:subClassOf rdf:resource="#MeteorologicalInformation"/>
+</owl:Class>
+
+<owl:Class rdf:about="#WindGustSpeed">
+  <rdfs:subClassOf rdf:resource="#MeteorologicalInformation"/>
+</owl:Class>
+
+<owl:Class rdf:about="#InertiaMode">
+  <rdfs:subClassOf rdf:resource="#InertiaResponse"/>
+</owl:Class>
+
+<owl:Class rdf:about="#InertiaCapability">
+  <rdfs:subClassOf rdf:resource="#InertiaResponse"/>
+</owl:Class>
+
+<owl:Class rdf:about="#InertiaAction">
+  <rdfs:subClassOf rdf:resource="#InertiaResponse"/>
+</owl:Class>
+
+<owl:Class rdf:about="#FrequencyLowSetpoint">
+  <rdfs:subClassOf rdf:resource="#InertiaResponse"/>
+</owl:Class>
+
+<owl:Class rdf:about="#FrequencyRateSetpoint">
+  <rdfs:subClassOf rdf:resource="#InertiaResponse"/>
+</owl:Class>
+
+<owl:Class rdf:about="#consitsOfYear">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Date"/>
+  <rdfs:range rdf:resource="#Year"/>
+</owl:Class>
+
+<owl:Class rdf:about="#consitsOfMonth">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Date"/>
+  <rdfs:range rdf:resource="#Month"/>
+</owl:Class>
+
+<owl:Class rdf:about="#consitsOfDay">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Date"/>
+  <rdfs:range rdf:resource="#Day"/>
+</owl:Class>
+
+<owl:Class rdf:about="#consitsOfHour">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+  <rdfs:domain rdf:resource="#Time"/>
+  <rdfs:range rdf:resource="#Hour"/>
+</owl:Class>
+
+<owl:Class rdf:about="#consitsOfMinute">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+  <rdfs:domain rdf:resource="#Time"/>
+  <rdfs:range rdf:resource="#Minute"/>
+</owl:Class>
+
+<owl:Class rdf:about="#consitsOfSecond">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+  <rdfs:domain rdf:resource="#Time"/>
+  <rdfs:range rdf:resource="#Second"/>
+</owl:Class>
+
+
+</rdf:RDF>

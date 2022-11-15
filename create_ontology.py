@@ -13,6 +13,10 @@ from owlready2 import (
     IrreflexiveProperty,
 )
 
+# "RelationshipType" = "Relationship"
+#
+# "Relationship" = "RelationshipType"
+
 MAX_LOOP_COUNT = 100
 
 
@@ -83,22 +87,24 @@ def create_relationships_between_classes(df, class_dict, dr):
         "Asymmetric": AsymmetricProperty,
         "Reflexive": ReflexiveProperty,
         "Irreflexive": IrreflexiveProperty,
+        "ï»¿a": None,
     }
 
     fm_property = df.loc[
         (
-            (df["RelationshipType"] != "OR")
-            & (df["RelationshipType"] != "AND")
-            & (df["RelationshipType"] != "Requires")
-            & (df["RelationshipType"] != "Excludes")
+            (df["Relationship"] != "OR")
+            & (df["Relationship"] != "AND")
+            & (df["Relationship"] != "Requires")
+            & (df["Relationship"] != "Excludes")
+            & (df["Relationship"] != "hasDataProperty")
         ),
         :,
     ]
-    object_property = fm_property.dropna(subset=["RelationshipType"])
+    object_property = fm_property.dropna(subset=["Relationship"])
 
     # fill property classes with relationships
     property_dict = {}
-    for name, values in dr.set_index("RelationshipType").iteritems():
+    for name, values in dr.set_index("Relationship").iteritems():
         property_specs = values.dropna()
         if property_specs.empty:
             print(f"Ignore {name} because no entry was found.")
@@ -108,12 +114,12 @@ def create_relationships_between_classes(df, class_dict, dr):
             idx_element = next(
                 iter(
                     object_property.index[
-                        object_property["RelationshipType"] == property_spec
-                    ]
+                        object_property["Relationship"] == property_spec
+                        ]
                 )
             )
             # retrieve object property domain and range
-            relationship_type = df.loc[idx_element, "RelationshipType"]
+            relationship_type = df.loc[idx_element, "Relationship"]
             domain_name = df.loc[idx_element, "ContextInformation"]
             range_name = df.loc[idx_element, "RelatedContextInformation"]
             if name not in name2class:
@@ -139,29 +145,38 @@ def add_comments_to_classes(df, class_dict):
 def add_same_as_class_restriction(df, class_dict):
     same_as = df.dropna(subset=["SameAs"])
     for _, row in same_as.iterrows():
-        same = row["SameAs"]
-        relevant_class = row["ContextInformation"]
-        class_dict[relevant_class].equivalent_to.append(class_dict[same])
+        if row["SameAs"] not in class_dict:
+            same = row["SameAs"]
+            print(f"Could not find {same} as Context Information.")
+        else:
+            same = row["SameAs"]
+            relevant_class = row["ContextInformation"]
+            class_dict[relevant_class].equivalent_to.append(class_dict[same])
 
 
 def add_disjoint_with_class_restriction(df, class_dict):
     disjoint_with = df.dropna(subset=["DisjointWith"])
     for _, row in disjoint_with.iterrows():
-        disjoint = row["DisjointWith"]
-        relevant_class = row["ContextInformation"]
-        AllDisjoint([class_dict[relevant_class], class_dict[disjoint]])
+        if row["DisjointWith"] not in class_dict:
+            disjoint = row["DisjointWith"]
+            print(f"Could not find {disjoint} as Context Information.")
+        else:
+            disjoint = row["DisjointWith"]
+            relevant_class = row["ContextInformation"]
+            AllDisjoint([class_dict[relevant_class], class_dict[disjoint]])
 
 
 def main():
     df = pd.read_csv(
-        "C://Users/Caesar/Documents/Spaces/BackUp/Dissertation/KontextModellierung/OntoCreationTest_Page_Ontology_FM.csv",
-        header=0,
+        # "C://Users/caesarb/Documents/BackUp/Dissertation/KontextModellierung/Evaluation-UC-WindEnergieSystem/OntologyCreation_WindEnergyEvaluation_OntologyFM.csv",
+        "C://Users/caesarb/Documents/BackUp/Dissertation/KontextModellierung/Evaluation-UC-Drohnen/OntologyCreation_DroneEvaluation_Ontology_FM.csv",
         sep=";",
         encoding="latin1",
     )
 
     dr = pd.read_csv(
-        "C://Users/Caesar/Documents/Spaces/BackUp/Dissertation/KontextModellierung/OntoCreationTest_Page_RelTyp.csv",
+        # "C://Users/caesarb/Documents/BackUp/Dissertation/KontextModellierung/Evaluation-UC-WindEnergieSystem/OntoCreationTest_Page_RelTyp.csv",
+        "C://Users/caesarb/Documents/BackUp/Dissertation/KontextModellierung/Evaluation-UC-Drohnen/OntologyCreation_DroneEvaluation_RelType.csv",
         header=0,
         sep=";",
         encoding="latin1",

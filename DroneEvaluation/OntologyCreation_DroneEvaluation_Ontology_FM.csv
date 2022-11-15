@@ -1,0 +1,38 @@
+﻿#;ContextInformation;Parent;Relationship;LogicRelationship;RelatedContextInformation;Property;SameAs;DisjointWith;Description
+IEC 61850-7-4;MeteorologicalInformation;;;;;Abstract;;;
+IEC 61850-7-4;HorizontalWindSpeed;MeteorologicalInformation;;;;;;;
+IEC 61850-7-4;VerticalWindSpeed;MeteorologicalInformation;;;;;;;
+IEC 61850-7-4;HorizontalWindDirection;MeteorologicalInformation;;;;;;;
+IEC 61850-7-4;VerticalWindDirection;MeteorologicalInformation;;;;;;;
+IEC 61850-7-4;WindGustSpeed;MeteorologicalInformation;;;;;;;
+IEC 61850-7-4;EnvironmentTemperature;MeteorologicalInformation;;;;;;;
+IEC 61850-7-4;RainFall;MeteorologicalInformation;;OR;SnowFall;;;;
+IEC 61850-7-4;RainFall;MeteorologicalInformation;influencedByRain;;VisualRange;;;;
+IEC 61850-7-4;SnowFall;MeteorologicalInformation;influencedBySnow;;VisualRange;;;;
+DIN ISO 28902-1;MeteorologicalOpticalRange;;;;;;;VisualRange;Weglänge in der Atmosphäre, die erforderlich ist, um den Lichtstrom in einem kollimierten Strahlenbündel einer Glühlampe bei einer Farbtemperatur von 2 700 K auf einen Wert von 5 % des Ausgangswertes zu verringern
+DIN ISO 28902-1;RunwayVisualRange;;;;;;;;Entfernung, über die der Pilot eines Luftfahrzeuges auf der Landebahnmittellinie die Markierungen auf der Oberfläche der Landebahn oder die Feuer sehen kann, die die Landebahn begrenzen oder ihre Mittellinie kennzeichnen
+DIN ISO 28902-1;VerticalOpticalRange;;;;;;;;meteorologische Sichtweite in vertikaler Richtung
+DIN ISO 28902-1;SlantOpticalRange;;;;;;;SlantVisualRange;horizontale Projektion der maximalen Entfernung, über die ein schwarzes Ziel in einer Ebene durch einen Beobachter erkennbar ist, der sich in einer Höhe h über der Ebene befindet, wobei der Kontrast 5 % beträgt
+DIN ISO 28902-1;SlantVisualRange;;;;;;;;"Sichtweite für ein festgelegtes Objekt oder Licht entlang einer Sichtlinie, die signifikant von der Horizontalen abweicht; beispielsweise die Sichtweite auf Objekte oder Lichter am Boden, gesehen von einem im Anflug befindlichen Luftfahrzeug"
+DIN ISO 28902-1;Vision;;;;;;;VisualRange;größte Entfernung, aus der ein (auf dem Boden befindliches) schwarzes Objekt geeigneter Größe sichtbar und erkennbar ist, wenn es bei Tageslicht gegen den Horizonthimmel betrachtet wird, oder das bei Nacht sichtbar und erkennbar ist, wenn das Umgebungslicht auf das Niveau des normalen Tageslichts angehoben wurde
+DIN ISO 28902-1;VisualRange;;;;;;;;größte Entfernung, aus der ein gegebenes Objekt unter beliebigen Bedingungen erkennbar ist, wobei lediglich die atmosphärische Transmissivität und der Schwellenkontrast als begrenzende Faktoren wirken
+VDI 5100-1;Source;TransportOrder;hasSourceGeolocation;;Geolocation;;;;
+ISO 19762-5;Geolocation;;;;;;;;
+VDI 5100-1;Target;TransportOrder;hasTargetGeolocation;;Geolocation;;;;
+VDA 4500;Small-Load-Carrier;TransportUnit;;;;Abstract;;;
+VDA 4500;Small-Load-Carrier;TransportUnit;;;;hasObjectDimension;;;
+VDA 4501;R-KLT_6429;Small-Load-Carrier;;OR;R-KLT 6415;;;;
+VDA 4502;R-KLT_6429;Small-Load-Carrier;;OR;R-KLT 4329;;;;
+VDA 4503;R-KLT_6429;Small-Load-Carrier;;OR;R-KLT 4315;;;;
+VDA 4504;R-KLT_6429;Small-Load-Carrier;;OR;R-KLT 3215;;;;
+VDA 4505;R-KLT_6415;Small-Load-Carrier;;;;;;;
+VDA 4506;R-KLT_4329;Small-Load-Carrier;;;;;;;
+VDA 4507;R-KLT_4315;Small-Load-Carrier;;;;;;;
+VDA 4508;R-KLT_3215;Small-Load-Carrier;;;;;;;
+ISA 88;State;;;;;;;;
+ISA 88;Wait;State;;;;;;;
+ISA 88;Idle;Wait;;;;;;;
+VDI 5100-1;TransportOrder;;;AND;Target;;;;
+VDI 5100-1;TransportOrder;;;AND;Source;;;;
+VDI 5100-1;TransportOrder;;;AND;Transport Unit;;;;
+VDI 5100-1;TransportUnit;;;AND;;hasObjectWeight;;;

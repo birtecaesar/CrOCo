@@ -1,0 +1,46 @@
+﻿#;ContextInformation;Parent;Relationship;LogicRelationship;RelatedContextInformation;Property;SameAs;DisjointWith;Description
+IEC 61400-25-2;WindPowerPlantMeteorologicalInformation;MeteorologicalInformation;;;;Abstract;;;Meteorological information
+IEC 61400-25-2;AirDensity;WindPowerPlantMeteorologicalInformation;;;;;;;
+IEC 61400-25-2;Altitude;WindPowerPlantMeteorologicalInformation;;;;;;;
+IEC 61400-25-2;Ice;WindPowerPlantMeteorologicalInformation;;;;;;;Thickness of ice. IEC 61400-25-2, p. 38
+IEC 61400-25-2;WaterTemperature;WindPowerPlantMeteorologicalInformation;;;;;;;Temperature of water. IEC 61400-25-2, p. 38
+IEC 61850-7-4;MeteorologicalInformation;;;;;Abstract;;;
+IEC 61850-7-4;EnvironmentTemperature;MeteorologicalInformation;;;;;;;
+IEC 61850-7-4;WetBulbTemperature;MeteorologicalInformation;;;;;;;
+IEC 61850-7-4;CloudCover;MeteorologicalInformation;;;;;;;
+IEC 61850-7-4;EnvironmentHumidity;MeteorologicalInformation;;;;;;;
+IEC 61850-7-4;DewPoint;MeteorologicalInformation;;;;;;;
+IEC 61850-7-4;DirectInsolation;MeteorologicalInformation;;;;;;;
+IEC 61850-7-4;DiffuseInsolation;MeteorologicalInformation;;;;;;;
+IEC 61850-7-4;DelayDuration;MeteorologicalInformation;;;;;;;
+IEC 61850-7-4;HorizontalInsolation;MeteorologicalInformation;;;;;;;
+IEC 61850-7-4;EnvironmentPressure;MeteorologicalInformation;;;;;;;
+IEC 61850-7-4;RainFall;MeteorologicalInformation;;OR;SnowFall;;;;
+IEC 61850-7-4;SnowDensity;MeteorologicalInformation;;;;;;;
+IEC 61850-7-4;SnowTemperature;MeteorologicalInformation;;;;;;;
+IEC 61850-7-4;SnowCover;MeteorologicalInformation;;;;;;;
+IEC 61850-7-4;SnowFall;MeteorologicalInformation;;;;;;;
+IEC 61850-7-4;SnowEqualization;MeteorologicalInformation;;;;;;;
+ISO 8601;Date;;consitsOfYear;AND;Year;;;Time;
+ISO 8601;Date;;consitsOfMonth;AND;Month;;;;
+ISO 8601;Date;;consitsOfDay;AND;Day;;;;
+ISO 8601;Year;;;;;;;;
+ISO 8601;Month;;;;;;;;
+ISO 8601;Day;;;;;;;;
+ISO 8601;Time;;consitsOfHour;AND;Hour;;;Date;
+ISO 8601;Time;;consitsOfMinute;AND;Minute;;;;
+ISO 8601;Time;;consitsOfSecond;AND;Second;;;;
+ISO 8601;Hour;;;;;;;;
+ISO 8601;Minute;;;;;;;;
+ISO 8601;Second;;;;;;;;
+IEC 61850-7-4;HorizontalWindSpeed;MeteorologicalInformation;;;;;;VerticalWindSpeed;
+IEC 61850-7-4;VerticalWindSpeed;MeteorologicalInformation;;;;;;HorizontalWindSpeed;
+IEC 61850-7-4;HorizontalWindDirection;MeteorologicalInformation;;;;;;VerticalWindDirection;
+IEC 61850-7-4;VerticalWindDirection;MeteorologicalInformation;;;;;;HorizontalWindDirection;
+IEC 61850-7-4;WindGustSpeed;MeteorologicalInformation;;;;;;;
+IEC 61400-25-2;InertiaMode;InertiaResponse;;;;InertiaResponseCtrlModeKind;;;Currently active inertia response control mode. IEC 61400-25-2, p. 40
+IEC 61400-25-2;InertiaCapability;InertiaResponse;;;;;;;Estimated amount of additional power (normally in percent of rated power) that can be provided upon activation of the inertia response function. IEC 61400-25-2, p. 40
+IEC 61400-25-2;InertiaAction;InertiaResponse;;;;;;;Inertia response control function command. Operating with value true activates the inertia response control function, false deactivates it. 'stVal' reflects the last accepted control value. IEC 61400-25-2, p. 40
+IEC 61400-25-2;FrequencyLowSetpoint;InertiaResponse;Requires;AND;FrequencyRateSetpoint;;;;Low frequency threshold that initiates release of inertia response emergency delta power, usually in Hz. IEC 61400-25-2, p. 41
+IEC 61400-25-2;FrequencyRateSetpoint;InertiaResponse;;;;;;;Rate of change in frequency that initiates release of inertia response emergency delta power, usually in Hz per second. IEC 61400-25-2, p. 41
+IEC 61400-25-2;InertiaResponse;;;;;Abstract;SyntheticInertia;BoostOfPower;Inertia response information: This function harnesses the kinetic energy stored in rotational parts of wind turbines to enable an additional power for a few seconds. This control strategy is sometime referred to as synthetic inertia where the control system detects the frequency deviation and adjusts the power flow into the grid based on this. After the release of the energy, the turbine will operate at sub-optimal rotor speed, resulting in lower efficiency. Thus, this function is an emergency delta power and should not be confused with boost of power above 100% by temporarily exceeding design criteria. IEC 61400-25-2, p. 39
